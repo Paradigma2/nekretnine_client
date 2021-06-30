@@ -1,3 +1,4 @@
+import { Agency } from './agency.model';
 export class User {
   id: number;
   username: string;
@@ -10,5 +11,5 @@ export class User {
   role: string;
   status: string;
   profilePicture: string;
-  // agency: Agency;
+  agency: Agency;
 }

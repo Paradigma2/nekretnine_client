@@ -14,10 +14,8 @@ export class Realty {
   purpose: string;
   status: string;
   ownerType!: string;
-  // owner: Owner;
+  owner: object; // User or Agency
   promoted!: boolean;
   viewCount!: number;
-  photos!: Photo[];
-  // offers!: Offer[];
   createdAt!: Date;
 }

@@ -1,1 +1,7 @@
-<p>home works!</p>
+
+  <div *ngFor='const realty of realties'>
+    <img src='../../../../server/public/${ realty.photo }' width="100px">
+    <span>{{ realty.description }}</span>
+    <span>{{ realty.address }}</span>
+    <span>{{ realty.price }}</span>
+  </div>

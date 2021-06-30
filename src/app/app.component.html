@@ -23,7 +23,7 @@
       <!-- Right Side Of Navbar -->
       <ul class="nav navbar-nav-right">
           <li>
-            <a *ngIf="authenticated()" class="navbar-brand" [routerLink]="['/user/', currentUser().id]" href="#!">Moj Nalog</a>
+            <a *ngIf="authenticated()" class="navbar-brand" [routerLink]="['/user', currentUser().id]" href="#!">Moj Nalog</a>
           </li>
           <li>
             <a *ngIf="authenticated()" class="navbar-brand" href="#!" (click)="signOut()">Izloguj se</a>

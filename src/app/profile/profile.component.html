@@ -1,1 +1,79 @@
-<p>profile works!</p>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<form>
+  <table>
+    <tr>
+      <td>Korisnicko ime*:</td>
+      <td>
+        <input type='text' [(ngModel)]='username' name='username'>
+      </td>
+    </tr>
+    <tr>
+      <td>Email*:</td>
+      <td>
+        <input type='text' [(ngModel)]='email' name='email'>
+      </td>
+    </tr>
+    <tr>
+      <td>Ime:</td>
+      <td>
+        <input type='text' [(ngModel)]='firstName' name='firstName'>
+      </td>
+    </tr>
+    <tr>
+      <td>Prezime:</td>
+      <td>
+        <input type='text' [(ngModel)]='lastName' name='lastName'>
+      </td>
+    </tr>
+    <tr>
+      <td>Grad:</td>
+      <td>
+        <input type='text' [(ngModel)]='city' name='city'>
+      </td>
+    </tr>
+    <tr>
+      <td>Drzava:</td>
+      <td>
+        <input type='text' [(ngModel)]='country' name='country'>
+      </td>
+    </tr>
+    <tr>
+      <td>Profilna slika:</td>
+      <td>
+        <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+
+        <div class="file-upload">
+          {{ profilePicture.name }}
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+              <i>Dodaj</i>
+            </button>
+       </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Sifra*:</td>
+      <td>
+        <input type='password' [(ngModel)]='password' name='password'>
+      </td>
+    </tr>
+    <tr>
+      <td>Potvrdi sifru*:</td>
+      <td>
+        <input type='password' [(ngModel)]='passwordCheck' name='passwordCheck'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button (click)='update()'>Azuriraj</button>
+      </td>
+      <td>
+        <button><a routerLink='/login'>Natrag</a></button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<span style='color: red'>
+  {{message}}
+</span>
