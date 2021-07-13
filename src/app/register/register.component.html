@@ -11,7 +11,7 @@
     <tr>
       <td>Email*:</td>
       <td>
-        <input type='text' [(ngModel)]='email' name='email'>
+        <input type='email' [(ngModel)]='email' name='email'>
       </td>
     </tr>
     <tr>
@@ -44,9 +44,6 @@
         <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
 
         <div class="file-upload">
-          <!-- <ng-container *ngIf="profilePicture; then imageName; else noImage"></ng-container>
-          <ng-template #imageName>{{ profilePicture.name }}</ng-template>
-          <ng-template #noImage>{{ "Nema slike" }}</ng-template> -->
           {{ profilePicture?.name || "Nema slike " }}
             <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
               <i>Dodaj</i>
@@ -77,6 +74,4 @@
   </table>
 </form>
 
-<span style='color: red'>
-  {{message}}
-</span>
+<ngb-alert *ngIf="!alertClosed" (close)="alertClosed = true">{{ alertMessage }}</ngb-alert>

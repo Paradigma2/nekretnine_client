@@ -1,0 +1,58 @@
+<form>
+  <table>
+    <tr>
+      <td><input type ="radio" name='realtyType' value='apartment' [(ngModel)]='realtyType'/>Stan</td>
+      <td><input type ="radio" name='realtyType' value='house' [(ngModel)]='realtyType'/>Kuca</td>
+    </tr>
+    <tr>
+      <td><input type ="radio" name='purpose' value='rent' [(ngModel)]='purpose' checked="checked"/>Izdavanje</td>
+      <td><input type ="radio" name='purpose' value='sale' [(ngModel)]='purpose'/>Prodaja</td>
+    </tr>
+    <tr>
+      <td>Adresa*:</td>
+      <td><input type='text' [(ngModel)]='address' name='address'></td>
+    </tr>
+    <tr>
+      <td>Grad*:</td>
+      <td><input type='text' [(ngModel)]='city' name='city'></td>
+    </tr>
+    <tr>
+      <td>Opstina*:</td>
+      <td> <input type='text' [(ngModel)]='county' name='county'></td>
+    </tr>
+    <tr>
+      <td>Kvadratura*:</td>
+      <td><input type='number' [(ngModel)]='size' name='size'></td>
+    </tr>
+    <tr>
+      <td>Cena*:</td>
+      <td><input type='number' [(ngModel)]='price' name='price'></td>
+    </tr>
+    <tr>
+      <td *ngIf="this.realtyType == 'apartment'">Sprat/Broj spratova:</td>
+      <td *ngIf="this.realtyType == 'house' || this.realtyType == undefined">Broj spratova:</td>
+      <td> <input type='text' [(ngModel)]='level' name='level'></td>
+    </tr>
+    <tr>
+      <td>Broj soba:</td>
+      <td><input type='number' [(ngModel)]='roomCount' name='roomCount'></td>
+    </tr>
+    <tr>
+      <td>Opis:</td>
+      <td><textarea name="description" rows="4" cols="50" [(ngModel)]='description'></textarea></td>
+    </tr>
+    <tr>
+      <td>Slike nekretnine:</td>
+      <td><input type="file" class="form-control" multiple="" (change)="onFileChange($event)"></td>
+    </tr>
+    <tr>
+      <td><button (click)='submit()'>Objavi</button></td>
+      <td><button><a routerLink='/home'>Natrag</a></button></td>
+    </tr>
+    <tr *ngFor='let url of images'>
+      <td colspan='2'><img [src]="url" height="150" width="200px" style="margin: 3px;"></td>
+    </tr>
+  </table>
+</form>
+
+<ngb-alert *ngIf="!alertClosed" (close)="alertClosed = true">{{ alertMessage }}</ngb-alert>

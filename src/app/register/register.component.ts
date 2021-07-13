@@ -20,7 +20,9 @@ export class RegisterComponent implements OnInit {
   firstName: string;
   lastName: string;
   profilePicture: File;
-  message: string;
+
+  alertClosed = true;
+  alertMessage: string;
 
   constructor(private httpService: HttpService, private router: Router) { }
 
@@ -46,8 +48,12 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.router.navigate(['home']);
         } else {
-          this.message = 'Neispravni podaci';
+          this.alertMessage = 'Doslo je do greske';
+          this.alertClosed = false;
         }
+      }, (err) => {
+        this.alertMessage = 'Doslo je do greske';
+        this.alertClosed = false;
       });
     }
   }
@@ -58,24 +64,27 @@ export class RegisterComponent implements OnInit {
 
   check(): boolean {
     if (!this.username) {
-      this.message = 'Morate uneti korisnicko ime!';
+      this.alertMessage = 'Morate uneti korisnicko ime!';
+      this.alertClosed = false;
       return false;
     }
     if (!this.email) {
-      this.message = 'Morate uneti email!';
+      this.alertMessage = 'Morate uneti email!';
+      this.alertClosed = false;
       return false;
     }
 
     const regExp = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,24}/g;
     if (! regExp.test(this.password)) {
-      this.message = 'Sifra mora imati najmanje 8, a najvise 24 karaktera. Mora sadrzati bar jedno malo i veliko slovo, bar jednu cifru i jedan specijalan karakter!';
+      this.alertMessage = 'Sifra mora imati najmanje 8, a najvise 24 karaktera. Mora sadrzati bar jedno malo i veliko slovo, bar jednu cifru i jedan specijalan karakter!';
+      this.alertClosed = false;
       return true; // change to false to enable
     }
     if (this.password !== this.passwordCheck) {
-      this.message = 'Sifre se ne podudaraju!';
+      this.alertMessage = 'Sifre se ne podudaraju!';
+      this.alertClosed = false;
       return false;
     }
     return true;
   }
-
 }

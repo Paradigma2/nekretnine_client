@@ -1,7 +1,44 @@
+<div class="promotionWrapper">
+  <div class="promotion" *ngFor="let promo of promoted">
+    <img src='http://localhost:3000/{{ promo.photo }}' width="100px">
+    <p>{{ promo.description }}</p>
+    <p>{{ promo.address }}</p>
+    <p>{{ promo.price }}</p>
+  </div>
+</div>
 
-  <div *ngFor='const realty of realties'>
-    <img src='../../../../server/public/${ realty.photo }' width="100px">
+<div class="cardWrapper">
+  <div class="card" *ngFor="let realty of realties">
+    <img src='http://localhost:3000/{{ realty.photo }}' width="100px">
     <span>{{ realty.description }}</span>
     <span>{{ realty.address }}</span>
     <span>{{ realty.price }}</span>
   </div>
+</div>
+
+<div class="homeOptions">
+  <form>
+    <table>
+      <tr>
+        <td>Grad:</td>
+        <td><input type='text' [(ngModel)]='searchQuery' name='searchQuery'></td>
+      </tr>
+      <tr>
+        <td>Cena od:</td>
+        <td><input type='number' [(ngModel)]='priceFrom' name='priceFrom'></td>
+      </tr>
+      <tr>
+        <td>Cena do:</td>
+        <td><input type='number' [(ngModel)]='priceTo' name='priceTo'></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button (click)='search()'>Pretrazi</button></td>
+      </tr>
+    </table>
+  </form>
+
+  <br/>
+
+  <button *ngIf="authenticated()"><a routerLink='/realty/new'>Oglasi svoju nekretninu</a></button>
+</div>
+

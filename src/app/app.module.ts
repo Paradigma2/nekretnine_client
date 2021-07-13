@@ -9,9 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SearchComponent } from './search/search.component';
 import { RealtyComponent } from './realty/realty.component';
 import { InboxComponent } from './inbox/inbox.component';
+import { AgentComponent } from './agent/agent.component';
+import { NewRealtyComponent } from './new-realty/new-realty.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,16 +22,18 @@ import { InboxComponent } from './inbox/inbox.component';
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    SearchComponent,
     RealtyComponent,
-    InboxComponent
+    InboxComponent,
+    AgentComponent,
+    NewRealtyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

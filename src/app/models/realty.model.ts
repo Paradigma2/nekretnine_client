@@ -1,4 +1,4 @@
-import { Photo } from './photo.model';
+// import { Photo } from './photo.model';
 
 export class Realty {
   id: number;
@@ -13,9 +13,10 @@ export class Realty {
   realtyType: string;
   purpose: string;
   status: string;
-  ownerType!: string;
+  ownerType: string;
   owner: object; // User or Agency
-  promoted!: boolean;
-  viewCount!: number;
-  createdAt!: Date;
+  promoted: boolean;
+  photo: string;
+  viewCount: number;
+  createdAt: Date;
 }

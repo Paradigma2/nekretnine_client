@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
 
   username: string;
   password: string;
-  message: string;
+  alertClosed = true;
+  alertMessage: string;
 
   constructor(private httpService: HttpService, private router: Router) { }
 
@@ -30,8 +31,13 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.router.navigate(['home']);
         } else {
-          this.message = 'Neispravni podaci';
+          this.alertClosed = false;
+          this.alertMessage = 'Neispravni podaci';
         }
+      },
+      (err) => {
+        this.alertClosed = false;
+        this.alertMessage = 'Neispravni podaci';
       });
   }
 }

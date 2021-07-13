@@ -9,29 +9,26 @@
     <div class="collapse navbar-collapse" id="app-navbar-collapse">
       <!-- Left Side Of Navbar -->
       <ul class="nav navbar-nav navbar">
-          <li>
-            <a  *ngIf="!authenticated() or currentUserRole() === 'basic'" class="navbar-brand" [routerLink]="['/home']" href="#!">Pocetna</a>
+          <li class="nav-item">
+            <a *ngIf="!authenticated() || currentUserRole() === 'basic'" class="navbar-brand" [routerLink]="['/home']" href="#!">Pocetna</a>
           </li>
-          <li>
-            <a *ngIf="!authenticated() or currentUserRole() === 'basic'" class="navbar-brand" [routerLink]="['/search']" href="#!">Pretraga</a>
-          </li>
-          <li>
-            <a *ngIf="currentUserRole() === 'basic' or currentUserRole() === 'agent'" class="navbar-brand" [routerLink]="['/inbox']" href="#!">Poruke</a>
-          </li>
+          <!-- <li>
+            <a *ngIf="currentUserRole() === 'basic' || currentUserRole() === 'agent'" class="navbar-brand" [routerLink]="['/inbox']" href="#!">Poruke</a>
+          </li> -->
       </ul>
 
       <!-- Right Side Of Navbar -->
       <ul class="nav navbar-nav-right">
-          <li>
+          <li class="nav-item">
             <a *ngIf="authenticated()" class="navbar-brand" [routerLink]="['/user', currentUser().id]" href="#!">Moj Nalog</a>
           </li>
-          <li>
+          <li class="nav-item">
             <a *ngIf="authenticated()" class="navbar-brand" href="#!" (click)="signOut()">Izloguj se</a>
           </li>
-          <li>
+          <li class="nav-item">
             <a *ngIf="!authenticated()" class="navbar-brand" [routerLink]="['/register']" href="#!">Registruj se</a>
           </li>
-          <li>
+          <li class="nav-item">
             <a *ngIf="!authenticated()" class="navbar-brand" [routerLink]="['/login']" href="#!">Uloguj se</a>
           </li>
       </ul>

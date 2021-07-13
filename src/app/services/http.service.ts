@@ -10,11 +10,15 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  get(req, body): Observable<object> {
-    return this.http.get(`${this.uri}/${req}`, body);
+  get(req, body = null): Observable<object> {
+    if (body) {
+      return this.http.get(`${this.uri}/${req}`, body);
+    } else {
+      return this.http.get(`${this.uri}/${req}`);
+    }
   }
 
-  post(req, body, httpHeaders = null): Observable<object> {
+  post(req, body = null, httpHeaders = null): Observable<object> {
     if (httpHeaders) {
       return this.http.post(`${this.uri}/${req}`, body, { headers: httpHeaders });
     } else {

@@ -23,6 +23,4 @@
   </table>
 </form>
 
-<span style='color: red'>
-  {{message}}
-</span>
+<ngb-alert *ngIf="!alertClosed" (close)="alertClosed = true">{{ alertMessage }}</ngb-alert>
